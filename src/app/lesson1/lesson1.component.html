@@ -1,0 +1,53 @@
+<p>lesson1 works!</p>
+<!-- Data Binding -->
+
+<!-- Інтерполяція -->
+<hr>
+<h2>Hello {{ name }}</h2>
+<h2>{{'Hello ' + name }}</h2>
+<h2>{{ sayHello() }}</h2>
+<h2>{{  car.mark }} {{ car.model }}</h2>
+<h2>{{ users[0] }} {{ users[1] }}</h2>
+
+<!-- Одностороннє зв'язування -->
+<h3><a [href]="homeUrl">google</a></h3>
+<h3><a [href]="homeUrl" [innerHTML]="homeUrlName"></a></h3>
+<h3><a bind-href="homeUrl" bind-innerHTML="homeUrlName"></a></h3>
+
+<table border="1">
+    <thead>
+        <th>Name 1</th>
+        <th>Name 2</th>
+        <th>Name 3</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td [attr.colspan]="countCol">TD 1/1-1/2</td>
+            <td [attr.rowspan]="countRow">TD 1/3-2/3</td>
+        </tr>
+        <tr>
+            <td>TD 2/1</td>
+            <td>TD 2/2</td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+
+<!-- Class and Style -->
+<h2 [class]="myClass">Some text</h2>
+<h2 [class.red]="isAdd">Some text</h2>
+
+<h2 [style.color]="isStyle ? 'red' : 'blue'">Some text style</h2>
+
+<!-- Event handling -->
+<button (click)="add()">add</button>
+<button on-click="add()">add</button>
+<h2><span (mouseover)="add()">Message</span>: {{ message }}</h2>
+
+<!-- two-way binding -->
+<!-- ngModel - директива для двохстороннього зв'язування -->
+<input type="text" [(ngModel)]="userName" name="userName" [class.danger]="check">
+<p>My name: {{ userName }}</p>
+<button (click)="sendMessage()">send</button>
+<h2>New text: {{ newText }}</h2>
+
