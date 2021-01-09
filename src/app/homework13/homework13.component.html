@@ -1,0 +1,54 @@
+<!-- <p>homework13 works!</p> -->
+
+<div class="container-fluid ">
+    <div class="bg-light ">
+        <h1 class="text-center text-muted">Angular users task</h1>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" class="form-control" [(ngModel)]="login" name="login" placeholder="Enter login">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" [(ngModel)]="password" name="password"
+                    placeholder="Enter password">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="text" class="form-control" [(ngModel)]="email" name="email" placeholder="Enter email">
+            </div>
+
+            <button *ngIf="editStatus" type="button" class="btn btn-info btn-block" (click)="saveUser()">Save edit user</button>
+            <button *ngIf="!editStatus" type="button" class="btn btn-success btn-block" (click)="addUser()">Add user</button>
+
+        </div>
+        <div class="col-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Login</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of allUsers; let i=index">
+                        <td>{{ i+1 }}</td>
+                        <td>{{ user.login }}</td>
+                        <td>{{ user.password }}</td>
+                        <td>{{ user.email }}</td>
+                        <td><button type="button" value="edit" class="btn btn-warning" (click)="editeUser(user)" [disabled]="editStatus">Edit</button></td>
+                        <!-- <td><button type="button" value="edit" class="btn btn-warning" (click)="editeUser(i)">Edit</button></td> -->
+                        <td><button type="button" value="delete" class="btn btn-danger"
+                                (click)="deleteUser(i)" [disabled]="editStatus">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
