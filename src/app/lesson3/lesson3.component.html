@@ -1,0 +1,46 @@
+<p>lesson3 works!</p>
+<!-- <hr> -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <form>
+                <div class="form-group">
+                    <label for="">Mark</label>
+                    <input type="text" class="form-control" [(ngModel)]="mark" name="mark">
+                </div>
+                <div class="form-group">
+                    <label for="">Model</label>
+                    <input type="text" class="form-control" [(ngModel)]="model" name="model">
+                </div>
+                <div class="form-group">
+                    <label for="">Year</label>
+                    <input type="number" class="form-control" [(ngModel)]="year" name="year">
+                </div>
+                <button type="button" class="btn btn-success" (click)="addCar()">Add Car</button>
+            </form>
+        </div>
+        <div class="col-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Mark</th>
+                        <th>Model</th>
+                        <th>Year</th>
+                        <th>Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let car of allCars; let i=index">
+                        <td>{{ i+1 }}</td>
+                        <td>{{ car.mark }}</td>
+                        <td>{{ car.model }}</td>
+                        <td>{{ car.year }}</td>
+                        <td>{{ car.available }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<!-- <p>homework14 works!</p> -->
+<div class="container-fluid bg-light d-flex justify-content-center">
+    <div class="col-9">
+        <h1>Plan your day!</h1>
+        <h4>User: Natalka Panchyshyn. Count of Task 6</h4>
+        <hr>
+
+        <div class="input-group  mb-3">
+            <input type="text" class="form-control" [(ngModel)]="task" name="task">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary btn-success text-white px-5"
+                    (click)="addTask()">Add</button>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Task</th>
+                    <th>Check</th>
+                    <th>DONE / IN PROGRESS</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of allTasks; let i=index">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ task.task }}</td>
+
+                    <td [ngSwitch]="task.status">
+                        <span *ngSwitchCase="true">
+                            <input type="checkbox" name="status" (click)="changeStatus(i)" checked>
+                        </span>
+                        <span *ngSwitchCase="false">
+                            <input type="checkbox" name="status" (click)="changeStatus(i)">
+                        </span>
+                    </td>
+                    <td [ngSwitch]="task.status">
+                        <span *ngSwitchCase="true" class="text-success">
+                            Done
+                        </span>
+                        <span *ngSwitchCase="false" class="text-danger">
+                            In PROGRESS
+                        </span>
+                    </td>
+
+                    <td><button type="button" value="edit" class="btn btn-warning"
+                            (click)="editeTask(task)">Edit</button></td>
+                    <td><button type="button" value="delete" class="btn btn-danger" [disabled]="!task.status"
+                            (click)="deleteTask(i)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="input-group  mb-3">
+            <input type="text" class="form-control" [(ngModel)]="newNameTask" name="newNameTask" [hidden]="newName">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary btn-info text-white px-5"
+                    (click)="saveNameTask()" [hidden]="newName">Save</button>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

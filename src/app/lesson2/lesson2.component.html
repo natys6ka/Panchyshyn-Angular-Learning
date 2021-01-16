@@ -1,0 +1,151 @@
+<p>lesson2 works!</p>
+
+<!-- СТРУКТУРНІ ДИРЕКТИВИ -->
+
+<!-- *ngIf="expression" -->
+
+<!-- <h2 *ngIf="true">Some text 1</h2>
+<h2 *ngIf="false">Some text 2</h2>
+<hr>
+<button (click)="show()" class="btn btn-primary">show</button>
+<h2 *ngIf="isShow">Show text</h2>
+<hr>
+<input type="text" [(ngModel)]="name" name="name">
+<p *ngIf="name === 'admin' ? true : false">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos excepturi error
+    minus? Vitae ipsa nobis natus assumenda architecto nemo sunt, nesciunt voluptate numquam, quisquam maxime eum. Quia
+    repellendus tenetur maxime.</p>
+<hr>
+
+<button (click)='check()' class="btn btn-secondary">check</button>
+<ng-container *ngIf="checking; else elseTemplate">
+    <p>some text 1</p>
+</ng-container>
+<ng-template #elseTemplate>
+    <p>some text 2</p>
+</ng-template>
+
+<h1 *ngIf="checking">some text 1</h1>
+<h1 *ngIf="!checking">some text 2</h1>
+
+<ng-container *ngIf="checking; then thenTemplate; else elseTemplate"></ng-container>
+<ng-template #thenTemplate>
+    <h2>some text 3</h2>
+</ng-template>
+<ng-template #elseTemplate>
+    <h2>some text 4</h2>
+</ng-template> -->
+
+
+
+<!-- *ngFor="let item of items" 
+let i = index OR index as i
+first, last
+even, odd
+count-->
+
+<!-- <ol>
+    <li *ngFor="let name of arrUsers"> {{ name }} </li>
+</ol>
+<hr>
+
+<ul>
+    <li *ngFor="let user of arrObjUsers">Name: {{ user.name }},  age: {{ user.age }}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let user of arrObjUsers; let i = index"> #{{ i }} Name: {{ user.name }}, age: {{ user.age }}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let user of arrObjUsers; index as i"> #{{ i+1 }} Name: {{ user.name }}, age: {{ user.age }}</li>
+</ul>
+
+<ul>
+    <li *ngFor="let user of arrObjUsers; index as i; first as isFirst; last as isLast">
+        <span [class.text-danger]="isFirst" [class.text-success]="isLast"> #{{ i+1 }} Name: {{ user.name }}, age: {{
+            user.age }} </span>
+    </li>
+</ul>
+
+<hr>
+
+<ul>
+    <li *ngFor="let year of arrYears; even as isEven; odd as isOdd">
+        <span [class.text-danger]="isEven" [class.text-success]="isOdd"> {{ year }}  </span>
+    </li>
+</ul>
+
+<ul>
+    <li *ngFor="let year of arrYears; index as i; count as c">
+        <span> {{ year }}  {{i+1}}/{{c}}</span>
+    </li>
+</ul> -->
+
+
+<!-- ngSwitch -->
+
+<!-- <input type="text" class="form-control" [(ngModel)]="person" name="person">
+<div [ngSwitch]="person">
+<p *ngSwitchCase="'ivan'">
+    Hello Ivan
+</p>
+<p *ngSwitchCase="'petro'">
+    Hello Petro
+</p>
+<p *ngSwitchCase="'pavlo'">
+    Hello Pavlo
+</p>
+<p *ngSwitchDefault>
+    Hello Guest
+</p>
+</div> -->
+
+
+
+<!-- АТРИБУТИВНІ ДИРЕКТИВИ -->
+
+<!-- <P [ngStyle]="elementStyles">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni, expedita.</P>
+<hr>
+<p [ngStyle]="{'color': true ? 'green' : 'red'}">Lorem ipsum dolor sit amet.</p>
+<p [ngStyle]="{'color': false ? 'green' : 'red'}">Lorem ipsum dolor sit amet.</p>
+<p [ngStyle]="{'color': isName == 'Ivan' ? 'green' : 'red'}">Lorem ipsum dolor sit amet.</p>
+<hr>
+<h3 [ngClass]="{'text-danger': true}">Lorem ipsum dolor sit amet.</h3>
+<h3 [ngClass]="{'text-danger': false}">Lorem ipsum dolor sit amet.</h3>
+<h3 [ngClass]="['text-danger', 'bg-success']">Lorem ipsum dolor sit amet.</h3>
+<h3 [ngClass]="{'text-danger': false, 'bg-success': true}">Lorem ipsum dolor sit amet.</h3>
+<h3 [ngClass]="false ? 'text-success' : 'text-danger'">Lorem ipsum dolor sit amet.</h3> -->
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <form>
+                <div class="form-group">
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="userName" name="userName">
+                </div>
+               <button type="button" class="btn btn-success" (click)="addUser()" [disabled]="!userName"> add</button>
+            </form>
+        </div>
+        <div class="col-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of arrUsers; let i=index"> 
+                        <td>{{ i+1 }}</td>
+                        <td>{{ user }} <span (click)="removeUser(i)" class="text-danger">X</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<hr>
+
