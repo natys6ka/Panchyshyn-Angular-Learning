@@ -1,0 +1,71 @@
+<div class="container-fluid bg-light d-flex justify-content-center">
+    <div class="col-10">
+
+        <h1 class="text-info">My phone book</h1>
+        <hr>
+
+        <div class="row">
+            <div class="col-8">
+
+                <div class="input-group my-3">
+                    <input type="text" class="form-control" [(ngModel)]="searchPhoneBook" name="searchPhoneBook"
+                        placeholder="Search text goes here">
+                    <button type="button" class="btn btn-outline-secondary btn-info text-white  ml-2"
+                        (click)="showModalAdd()">Add Phone</button>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th [class.active]="order === 'info.first'" (click)="setOrder('info.first')"
+                                class="mdl-data-table__cell--non-numeric">
+                                First name <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                            </th>
+                            <th [class.active]="order === 'info.last'" (click)="setOrder('info.last')">
+                                Last name <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                            </th>
+                            <th [class.active]="order === 'info.number'" (click)="setOrder('info.number')">
+                                Number <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                            </th>
+                            <th> Edit </th>
+                            <th> Delete </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            *ngFor="let phonebook of allPhone | search: searchPhoneBook | orderBy: order:reverse:'case-insensitive'; let i=index">
+                            <td>{{ phonebook.first }}</td>
+                            <td>{{ phonebook.last }}</td>
+                            <td>{{ phonebook.number }}</td>
+                            <td><button type="button" value="edit" class="btn btn-warning" (click)="showModalEdit(phonebook)">Edit</button></td>
+                            <td><button type="button" value="delete" class="btn btn-danger" (click)="deletePhone(i)">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-4">
+
+                <div [style.visibility]="modalAdd ? 'visible' : 'hidden'" class="border rounded bg-white p-3">
+                    <h6>Add phone</h6>
+                    <input type="text" class="form-control m-1" [(ngModel)]="addFirstName" name="addFirstName"
+                        placeholder="first name goes here">
+                    <input type="text" class="form-control m-1" [(ngModel)]="addSecondName" name="addSecondName"
+                        placeholder="second name goes here">
+                    <input type="text" class="form-control m-1" [(ngModel)]="addNumber" name="addNumber"
+                        placeholder="number phone goes here">
+                    <button type="button" class="btn btn-block btn-success text-white  m-1" (click)="addPhone()">Save</button>
+                </div>
+
+                <div [style.visibility]="modalEdit ? 'visible' : 'hidden'" class="border rounded bg-white p-3">
+                    <h6>Edit phone</h6>
+                    <input type="text" class="form-control m-1" [(ngModel)]="editFirstName" name="editFirstName">
+                    <input type="text" class="form-control m-1" [(ngModel)]="editSecondName" name="editSecondName">
+                    <input type="text" class="form-control m-1" [(ngModel)]="editNumber" name="editNumber">
+                    <button type="button" class="btn btn-block btn-success text-white  m-1" (click)="editPhone(phonebook)">Edit</button>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
